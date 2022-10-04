@@ -1,0 +1,15 @@
+
+    <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <EnableXGBoostUnsupportedPlatformTargetCheck Condition="'$(EnableXGBoostUnsupportedPlatformTargetCheck)' == ''">true</EnableXGBoostUnsupportedPlatformTargetCheck>
+    </PropertyGroup>
+    <Target Name="_XGBoostCheckForUnsupportedPlatformTarget"
+            Condition="'$(EnableXGBoostUnsupportedPlatformTargetCheck)' == 'true'"
+            AfterTargets="_CheckForInvalidConfigurationAndPlatform">
+        <Error Condition="'$(PlatformTarget)' != 'x64' AND
+                        ('$(OutputType)' == 'Exe' OR '$(OutputType)'=='WinExe') AND
+                        !('$(TargetFrameworkIdentifier)' == '.NETCoreApp' AND '$(PlatformTarget)' == '')"
+            Text="XGBoost currently supports 'x64' processor architectures. Please ensure your application is targeting 'x64'." />
+    </Target>
+    </Project>
+    

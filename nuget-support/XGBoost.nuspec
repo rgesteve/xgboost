@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>XGBoost</id>
+    <version>1.7.0</version>
+    <authors>DMLC Team</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <!-- <icon>icon.png</icon> -->
+    <projectUrl>http://xgboost.net/</projectUrl>
+    <description>The XGBoost gradient boosting library</description>
+    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
+    <copyright>$copyright$</copyright>
+    <tags>native xgboost</tags>
+  </metadata>
+
+  <files>
+    <file src="lib/libxgboost.so" target="runtimes/linux-x64/native/libxgboost.so" />
+    <file src="lib/build/XGBoost.props" target="build/XGBoost.props" />
+    <file src="lib/build/XGBoost.targets" target="build/XGBoost.targets" />
+  </files>
+</package>

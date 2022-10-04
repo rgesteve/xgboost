@@ -386,3 +386,15 @@ if (ADD_PKGCONFIG)
     FILES ${xgboost_BINARY_DIR}/xgboost.pc
     DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
 endif (ADD_PKGCONFIG)
+
+install(
+  FILES ${xgboost_SOURCE_DIR}/nuget-support/XGBoost.nuspec
+  DESTINATION ${CMAKE_INSTALL_PREFIX})
+
+install(
+  FILES ${xgboost_SOURCE_DIR}/nuget-support/msbuild/XGBoost.props
+  DESTINATION ${CMAKE_INSTALL_LIBDIR}/build)
+
+install(
+  FILES ${xgboost_SOURCE_DIR}/nuget-support/msbuild/XGBoost.targets
+  DESTINATION ${CMAKE_INSTALL_LIBDIR}/build)
