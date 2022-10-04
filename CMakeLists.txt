@@ -272,6 +272,18 @@ if (BUILD_C_DOC)
   run_doxygen()
 endif (BUILD_C_DOC)
 
+option(CREATE_NUGET_PACKAGE "Nuget package creation specified" OFF)
+if(CREATE_NUGET_PACKAGE)
+  message(STATUS "***** Should be enabling nuget creation")
+else()
+  message(STATUS "***** Nuget package creation is not enabled")
+endif()
+
+if(CREATE_NUGET_PACKAGE)
+  set(CPACK_GENERATOR "NuGet")
+  set(CPACK_NUGET_PACKAGE_TAGS "nuget" "native")
+endif()
+
 include(CPack)
 
 include(GNUInstallDirs)
@@ -291,6 +303,19 @@ if (BUILD_STATIC_LIB)
 else (BUILD_STATIC_LIB)
   set(INSTALL_TARGETS xgboost runxgboost)
 endif (BUILD_STATIC_LIB)
+
+# if(CREATE_NUGET_PACKAGE)
+#   if (WIN32) # Windows
+#     set(CMAKE_INSTALL_BINDIR "${CMAKE_INSTALL_PREFIX}/runtimes/win-x64/native")
+#     set(CMAKE_INSTALL_LIBDIR "${CMAKE_INSTALL_PREFIX}/runtimes/win-x64/native")
+#   elseif(APPLE) # OSX
+#     set(CMAKE_INSTALL_BINDIR "${CMAKE_INSTALL_PREFIX}/runtimes/osx-x64/native")
+#     set(CMAKE_INSTALL_LIBDIR "${CMAKE_INSTALL_PREFIX}/runtimes/osx-x64/native")
+#   else() # Linux
+#     set(CMAKE_INSTALL_BINDIR "${CMAKE_INSTALL_PREFIX}/runtimes/linux-x64/native")
+#     set(CMAKE_INSTALL_LIBDIR "${CMAKE_INSTALL_PREFIX}/runtimes/linux-x64/native")
+#   endif()
+# endif()
 
 install(TARGETS ${INSTALL_TARGETS}
   EXPORT XGBoostTargets
