@@ -16,6 +16,7 @@
 
   <files>
     <file src="lib/libxgboost.so" target="runtimes/linux-x64/native/libxgboost.so" />
+    <file src="bin/xgboost.dll" target="runtimes/win-x64/native/xgboost.dll" />
     <file src="lib/build/XGBoost.props" target="build/XGBoost.props" />
     <file src="lib/build/XGBoost.targets" target="build/XGBoost.targets" />
   </files>
