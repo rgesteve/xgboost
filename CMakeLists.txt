@@ -387,9 +387,13 @@ if (ADD_PKGCONFIG)
     DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
 endif (ADD_PKGCONFIG)
 
+if(CREATE_NUGET_PACKAGE)
+message(STATUS "Including the nuspec file")
+else()
 install(
   FILES ${xgboost_SOURCE_DIR}/nuget-support/XGBoost.nuspec
   DESTINATION ${CMAKE_INSTALL_PREFIX})
+endif()
 
 install(
   FILES ${xgboost_SOURCE_DIR}/nuget-support/msbuild/XGBoost.props
